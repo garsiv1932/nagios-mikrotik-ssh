@@ -59,6 +59,21 @@ define service{
 }
 ```
 
+Por ultimo nos queda provocar la primer coneccion al servidor desde el usuario nagios para que se cree el archivo known_hosts:
+
+```markdown
+sudo su
+su nagios
+/usr/local/nagios/libexec/check_Mikrotik_OS.sh -H 192.168.1.10 -U nagios -C
+```
+
+El script admite las siguientes banderas:
+
+```markdown
+-U: Nombre de usuario en el router nagios habilitado para lanzar comandos.
+-C: Cual es el mensaje que queremos que reciba en caso de firmware desactualizado, por defecto es CRITICAL.
+-H: Direccion IP del servidor. 
+```
 
 ## REFERENCIAS
 
