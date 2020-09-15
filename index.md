@@ -4,6 +4,8 @@ Para monitorear equipos Mikrotik tenemos las opciones de SNMP o API. En Linux SN
 Para resolver esta brecha hay una solución, que es correr comandos en la consola de RouterOS directamente desde nuestro servidor de monitoreo Nagios. Para esto tendremos que generar un usuario que se conectara mediante SSH solamente desde nuestro servidor y mediante un certificado pre compartido único. 
 
 (*) Este manual esta basado en un servidor con DEBIAN.
+
+
 Primero deberemos generar la siguiente ruta de directorios /home/nagios/.ssh/ . Esto es debido a que el cliente SSH por defecto genera un arachivo known_hosts en el cual se guardan las claves RSA.
 
 ```markdown
@@ -28,7 +30,34 @@ Posteriormente nos conectaremos a nuestro Mikrotik y crearemos:
 ###### Un grupo
 ![Success](https://github.com/garsiv1932/nagios-mikrotik-ssh/blob/master/grupo.jpg?raw=true)
 
+###### Un usuario
+![Success](https://github.com/garsiv1932/nagios-mikrotik-ssh/blob/master/usuario.jpg?raw=true)
 
+(*) Por seguridad restringimos el acceso de este usuario a conecciones provenientes solo desde el servidor.
+
+
+Y por ultimo le asignamos a este usuario el certificado que se encargara de la autenticacion:
+
+```markdown
+user ssh-keys import public-key-file=id_rsa.pub user=nagios
+```
+
+Una vez hecho esto ya tenemos todo configurado para hacer las configuraciones en Nagios para monitoreear este router mediante SSH y comandos nativos de Mikrotik.
+
+```markdown
+sudo nano /usr/local/nagios/etc/nrpe.cfg
+command[check_nagios_firmware]=/usr/local/nagios/libexec/check_Mikrotik_OS.sh -H 192.168.1.10 -C
+```
+
+```markdown
+define service{
+        use			generic-service
+        host_name		Server
+        service_description	Router Update
+        contact_groups		admins
+        check_command	check_nrpe!check_nagios_firmware
+}
+```
 
 
 ## REFERENCIAS
