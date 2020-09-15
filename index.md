@@ -5,6 +5,7 @@ Para resolver esta brecha hay una solución, que es correr comandos en la consol
 
 (*) Este manual esta basado en un servidor con DEBIAN.
 
+# En el Servidor
 
 Primero deberemos generar la siguiente ruta de directorios /home/nagios/.ssh/ . Esto es debido a que el cliente SSH por defecto genera un arachivo known_hosts en el cual se guardan las claves RSA.
 
@@ -26,6 +27,9 @@ ftp 192.168.1.10
 put id_rsa.pub
 bye
 ```
+
+# En el Mikrotik
+
 Posteriormente nos conectaremos a nuestro Mikrotik y crearemos:
 ###### Un grupo
 ![Success](https://github.com/garsiv1932/nagios-mikrotik-ssh/blob/master/grupo.jpg?raw=true)
@@ -35,6 +39,9 @@ Posteriormente nos conectaremos a nuestro Mikrotik y crearemos:
 
 (*) Por seguridad restringimos el acceso de este usuario a conecciones provenientes solo desde el servidor.
 
+
+
+# En el Servidor
 
 Y por ultimo le asignamos a este usuario el certificado que se encargara de la autenticacion:
 
