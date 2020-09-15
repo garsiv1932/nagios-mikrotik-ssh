@@ -6,11 +6,6 @@ Para resolver esta brecha hay una solución, que es correr comandos en la consol
 (*) Este manual esta basado en un servidor con DEBIAN.
 Primero deberemos generar la siguiente ruta de directorios /home/nagios/.ssh/ . Esto es debido a que el cliente SSH por defecto genera un arachivo known_hosts en el cual se guardan las claves RSA.
 
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
 ```markdown
 sudo mkdir -p /home/nagios/.ssh/
 ```
@@ -31,8 +26,14 @@ bye
 ```
 Posteriormente nos conectaremos a nuestro Mikrotik y crearemos:
 ###### Un grupo
+![Success](https://github.com/garsiv1932/nagios-mikrotik-ssh/blob/master/grupo.jpg?raw=true)
 
-![Success](https://github.com/garsiv1932/nagios-mikrotik-ssh/blob/master/grupo.jpeg?raw=true)
+
+
+
+## REFERENCIAS
+
+
 
 ```markdown
 Syntax highlighted code block
