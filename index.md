@@ -61,6 +61,8 @@ sudo nano /usr/local/nagios/etc/nrpe.cfg
 command[check_nagios_firmware]=/usr/local/nagios/libexec/check_Mikrotik_OS.sh -H 192.168.1.10 -C
 ```
 
+Y definiremos nuestro servicio en nuestro objeto:
+
 ```markdown
 define service{
         use			generic-service
