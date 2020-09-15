@@ -3,9 +3,8 @@
 Para monitorear equipos Mikrotik tenemos las opciones de SNMP o API. En Linux SNMP puede ser monitoreado desde bash mediante la instalación y configuración del daeamon SNMP, pero hay algunas cuestiones que los OIDS no pueden resolver (o al menos yo no encontre) y API enfrenta el problema de que debe ser implementado por lenguajes de programación como PHP, Python, NodeJS,etc y no todos  los sysadmins saben programar en los mencionados lenguajes.
 Para resolver esta brecha hay una solución, que es correr comandos en la consola de RouterOS directamente desde nuestro servidor de monitoreo Nagios. Para esto tendremos que generar un usuario que se conectara mediante SSH solamente desde nuestro servidor y mediante un certificado pre compartido único. 
 
-(*) Este manual esta basado en un servidor con DEBIAN.
 
-# En el Servidor
+### En el Servidor
 
 Primero deberemos generar la siguiente ruta de directorios /home/nagios/.ssh/ . Esto es debido a que el cliente SSH por defecto genera un arachivo known_hosts en el cual se guardan las claves RSA.
 
@@ -28,7 +27,7 @@ put id_rsa.pub
 bye
 ```
 
-# En el Mikrotik
+### En el Mikrotik
 
 Posteriormente nos conectaremos a nuestro Mikrotik y crearemos:
 ###### Un grupo
@@ -41,7 +40,7 @@ Posteriormente nos conectaremos a nuestro Mikrotik y crearemos:
 
 
 
-# En el Servidor
+### En el Servidor
 
 Y por ultimo le asignamos a este usuario el certificado que se encargara de la autenticacion:
 
@@ -83,3 +82,4 @@ El script admite las siguientes banderas:
 ```
 
 ## REFERENCIAS
+(*) Este manual esta basado en un servidor con DEBIAN.
