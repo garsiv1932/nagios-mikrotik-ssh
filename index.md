@@ -13,10 +13,26 @@ Markdown is a lightweight and easy-to-use syntax for styling your writing. It in
 
 ```markdown
 sudo mkdir -p /home/nagios/.ssh/
+```
+Posteriormente, parados en el directorio antes creado, generaremos un certificado en el servidor con los siguientes comandos en el directorio.
 
+```markdown
 ssh-keygen -t rsa -b 2048 -v
 sudo chown -R nagios:nagios /home/nagios/
 ```
+
+Esto generara dos archivos un id_rsa.pub y un id_rsa sin extension el cual deberemos renombrar a id_resa.pem.
+El archivo mas importante en todo esto es el .pub, el cual deberemos copiar a nuestro equipo Mikrotik. Para esto nos conectaremos por FTP:
+
+```markdown
+ftp 192.168.1.10   
+put id_rsa.pub
+bye
+```
+Posteriormente nos conectaremos a nuestro Mikrotik y crearemos:
+###### Un grupo
+
+![Success](https://github.com/garsiv1932/nagios-mikrotik-ssh/blob/master/grupo.jpeg?raw=true)
 
 ```markdown
 Syntax highlighted code block
