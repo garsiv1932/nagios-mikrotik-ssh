@@ -45,8 +45,9 @@ Posteriormente nos conectaremos a nuestro Mikrotik y crearemos:
 Primero descargaremos el script y lo copiamos al directorio de plugins de Nagios:
 
 ```markdown
-wget "https://github.com/garsiv1932/nagios-mikrotik-ssh/blob/master/check_Mikrotik_OS.sh"
-cp check_Mikrotik_OS.sh /usr/local/nagios/libexec/
+wget "https://github.com/garsiv1932/nagios-mikrotik-ssh/archive/master.zip"
+unzip master.zip
+cp nagios-mikrotik-ssh-master/check_Mikrotik_OS.sh /usr/local/nagios/libexec/ 
 ```
 
 Y por ultimo le asignamos a este usuario el certificado que se encargara de la autenticacion:
@@ -88,5 +89,4 @@ El script admite las siguientes banderas:
 -H: Direccion IP del servidor. 
 ```
 
-## REFERENCIAS
 (*) Este manual esta basado en un servidor con DEBIAN.
