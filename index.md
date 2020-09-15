@@ -38,7 +38,13 @@ Posteriormente nos conectaremos a nuestro Mikrotik y crearemos:
 
 (*) Por seguridad restringimos el acceso de este usuario a conecciones provenientes solo desde el servidor.
 
+Y por ultimo le asignamos a este usuario el certificado que se encargara de la autenticacion:
 
+```markdown
+user ssh-keys import public-key-file=id_rsa.pub user=nagios
+```
+
+Una vez hecho esto ya tenemos todo configurado para hacer las configuraciones en Nagios para monitoreear este router mediante SSH y comandos nativos de Mikrotik.
 
 ### En el Servidor
 
@@ -49,15 +55,7 @@ wget "https://github.com/garsiv1932/nagios-mikrotik-ssh/archive/master.zip"
 unzip master.zip
 cp nagios-mikrotik-ssh-master/check_Mikrotik_OS.sh /usr/local/nagios/libexec/ 
 ```
-
-Y por ultimo le asignamos a este usuario el certificado que se encargara de la autenticacion:
-
-```markdown
-user ssh-keys import public-key-file=id_rsa.pub user=nagios
-```
-
-Una vez hecho esto ya tenemos todo configurado para hacer las configuraciones en Nagios para monitoreear este router mediante SSH y comandos nativos de Mikrotik.
-
+Posteriormente configuramos el NRPE:
 ```markdown
 sudo nano /usr/local/nagios/etc/nrpe.cfg
 command[check_nagios_firmware]=/usr/local/nagios/libexec/check_Mikrotik_OS.sh -H 192.168.1.10 -C
