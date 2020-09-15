@@ -69,7 +69,7 @@ define service{
         host_name		Server
         service_description	Router Update
         contact_groups		admins
-        check_command	check_nrpe!check_nagios_firmware
+        check_command	        check_nrpe!check_nagios_firmware
 }
 ```
 
